@@ -25,6 +25,7 @@ jobs:
           auto-update-conda: true
           miniconda-version: latest
           activate-environment: test
+          auto-activate-base: true
           python-version: ${{ matrix.python-version }}
 
       - name: Start the test cluster
