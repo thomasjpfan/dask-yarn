@@ -25,12 +25,11 @@ jobs:
           auto-update-conda: true
           miniconda-version: latest
           activate-environment: test
-          auto-activate-base: true
-          python-version: ${{ matrix.python-version }}
 
       - name: Start the test cluster
         shell: bash -l {0}
         run: |
+          conda activate test
           which python
           which pip
           pip install git+https://github.com/jcrist/hadoop-test-cluster.git
