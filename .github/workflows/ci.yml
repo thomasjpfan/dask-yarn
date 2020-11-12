@@ -23,13 +23,13 @@ jobs:
         uses: conda-incubator/setup-miniconda@16930e6
         with:
           auto-update-conda: true
-          miniconda-version: latest
-          activate-environment: test
+          miniconda-version: "latest"
+          activate-environment: test-environment
 
       - name: Start the test cluster
         shell: bash -l {0}
         run: |
-          conda activate test
+          conda activate test-environment
           which python
           which pip
           pip install git+https://github.com/jcrist/hadoop-test-cluster.git
