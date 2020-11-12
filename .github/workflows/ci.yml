@@ -29,12 +29,8 @@ jobs:
       - name: Start the test cluster
         shell: bash -l {0}
         run: |
-          conda activate test-environment
-          which python
-          which pip
+          conda info
           pip install git+https://github.com/jcrist/hadoop-test-cluster.git
-          pip list
-          which htcluster
           # htcluster startup --mount .:dask-yarn --config $CLUSTER_CONFIG
           # htcluster exec -- pwd
         env:
