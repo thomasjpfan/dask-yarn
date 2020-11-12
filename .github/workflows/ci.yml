@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
   test:
-    name: Python ${{ matrix.python-version }}
+    name: Python ${{ matrix.python }} with ${{ matrix.cluster-config }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -29,5 +29,4 @@ jobs:
 
       - name: Install dependencies
         shell: bash -l {0}
-        run: |
-          which docker-compose
+        run: docker-compose --version
