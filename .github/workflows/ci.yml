@@ -30,15 +30,13 @@ jobs:
       - name: Install the test cluster
         shell: bash -l {0}
         run: |
-          pip install git+https://github.com/jcrist/hadoop-test-cluster.git
         env:
           CLUSTER_CONFIG: ${{ matrix.cluster-config }}
 
       - name: Start the test cluster
         shell: bash -l {0}
         run: |
-          which python
-          pip list
+          pip install git+https://github.com/jcrist/hadoop-test-cluster.git
           which htcluster
           # htcluster startup --mount .:dask-yarn --config $CLUSTER_CONFIG
           # htcluster exec -- pwd
