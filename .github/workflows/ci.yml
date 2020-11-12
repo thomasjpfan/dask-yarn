@@ -31,6 +31,7 @@ jobs:
         run: |
           conda info
           pip install git+https://github.com/jcrist/hadoop-test-cluster.git
+          conda list
           # htcluster startup --mount .:dask-yarn --config $CLUSTER_CONFIG
           # htcluster exec -- pwd
         env:
