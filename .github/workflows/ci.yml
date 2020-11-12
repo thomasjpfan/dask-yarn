@@ -37,6 +37,8 @@ jobs:
       - name: Start the test cluster
         shell: bash -l {0}
         run: |
-          htcluster startup --mount .:dask-yarn --config $CLUSTER_CONFIG
-          htcluster exec -- pwd
+          which python
+          pip list
+          # htcluster startup --mount .:dask-yarn --config $CLUSTER_CONFIG
+          # htcluster exec -- pwd
 
