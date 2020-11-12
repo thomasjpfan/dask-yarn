@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
   test:
-    name: Python ${{ matrix.python }} with ${{ matrix.cluster-config }}
+    name: Python ${{ matrix.python }} with cluster-config ${{ matrix.cluster-config }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -12,8 +12,8 @@ jobs:
         include:
           - cluster-config: simple
             python: "3.6"
-          - cluster-config: kerberos
-            python: "3.7"
+          # - cluster-config: kerberos
+          #   python: "3.7"
 
     steps:
       - name: Checkout source
@@ -27,6 +27,16 @@ jobs:
           activate-environment: test
           python-version: ${{ matrix.python-version }}
 
-      - name: Install dependencies
+      - name: Install the test cluster
         shell: bash -l {0}
-        run: docker-compose --version
+        run: |
+          pip install git+https://github.com/jcrist/hadoop-test-cluster.git
+        env:
+          CLUSTER_CONFIG: ${{ matrix.cluster-config }}
+
+      - name: Start the test cluster
+        shell: bash -l {0}
+        run: |
+          htcluster startup --mount .:dask-yarn --config $CLUSTER_CONFIG
+          htcluster exec -- pwd
+
