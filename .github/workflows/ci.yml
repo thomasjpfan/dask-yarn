@@ -23,7 +23,7 @@ jobs:
         uses: conda-incubator/setup-miniconda@16930e6
         with:
           auto-update-conda: true
-          miniconda-version: "latest"
+          miniconda-version: latest
           activate-environment: test-environment
 
       - name: Start the test cluster
