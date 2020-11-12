@@ -39,6 +39,7 @@ jobs:
         run: |
           which python
           pip list
+          which htcluster
           # htcluster startup --mount .:dask-yarn --config $CLUSTER_CONFIG
           # htcluster exec -- pwd
 
