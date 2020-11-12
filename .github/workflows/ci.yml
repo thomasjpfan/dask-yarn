@@ -30,6 +30,7 @@ jobs:
         shell: bash -l {0}
         run: |
           conda info
+          which pip
           pip install git+https://github.com/jcrist/hadoop-test-cluster.git
           conda list
           # htcluster startup --mount .:dask-yarn --config $CLUSTER_CONFIG
